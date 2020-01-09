@@ -7,10 +7,10 @@ import TabsPage from '../pages/TabsPage';
 const AppNavigator = createStackNavigator(
   {
     Intro: {
-      screen: IntroPage,
+      screen: IntroPage
     },
     Tabs: {
-      screen: TabsPage,
+      screen: TabsPage
     }
   },
   {

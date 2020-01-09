@@ -13,7 +13,7 @@ class MyCard extends React.Component {
   render() {
     const fondo = this.props.fondo;
     return (
-      <ImageBackground source={fondo} style={{ flex: 1, flexDirection: "column-reverse", width: 320, height: 150 }}>
+      <ImageBackground source={fondo} imageStyle={{ borderRadius: 15 }} style={{ flex: 1, flexDirection: "column-reverse", width: 320, height: 150 }}>
         <View style={{ backgroundColor: "white", height: 50, width: 300, alignSelf: "center", marginBottom: 10, borderRadius: 10 }}>
           <View style={{ flex: 1, flexDirection: "row",alignItems:"center" }}>
             <Icon
