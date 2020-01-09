@@ -1,24 +1,65 @@
 import React from 'react';
-import { ScrollView,Image,View, Text } from 'react-native';
+import { ScrollView, View, Text, ImageBackground } from 'react-native';
 import { StatusBar } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 import fondo1 from '../assets/fondo-1.jpg';
 import fondo2 from '../assets/fondo-2.jpg';
 import fondo3 from '../assets/fondo-3.jpg';
 
+class MyCard extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    const fondo = this.props.fondo;
+    return (
+      <ImageBackground source={fondo} style={{ flex: 1, flexDirection: "column-reverse", width: 320, height: 150 }}>
+        <View style={{ backgroundColor: "white", height: 50, width: 300, alignSelf: "center", marginBottom: 10, borderRadius: 10 }}>
+          <View style={{ flex: 1, flexDirection: "row",alignItems:"center" }}>
+            <Icon
+              name="play"
+              size={25}
+              color="black"
+              type='font-awesome'
+              iconStyle={{marginLeft:15}}
+            />
+            <View style={{ flex: 1, flexDirection: "column", marginLeft: 40, justifyContent: "center" }}>
+              <Text style={{fontWeight:"bold"}}>01. The basics</Text>
+              <Text style={{color:"grey"}}>Start with the basics</Text>
+            </View>
+          </View>
+        </View>
+      </ImageBackground>
+    );
+  }
+}
+
 class Cards extends React.Component {
   render() {
     return (
       <ScrollView horizontal>
-        <Image source={fondo1} style={{ width: 320, height: 150}} />
-        <Image source={fondo2} style={{ width: 320, height: 150}} />
-        <Image source={fondo3} style={{ width: 320, height: 150}} />
+        <MyCard fondo={fondo1} />
+        <MyCard fondo={fondo2} />
+        <MyCard fondo={fondo3} />
       </ScrollView>
     );
   }
 }
 
 class HomePage extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  componentDidMount() {
+    this._navListener = this.props.navigation.addListener('didFocus', () => {
+      StatusBar.setBarStyle('white-content');
+      StatusBar.setBackgroundColor('#C4403F');
+    });
+  }
+
+  componentWillUnmount() {
+    this._navListener.remove();
+  }
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -30,7 +71,7 @@ class HomePage extends React.Component {
         <View style={{ flex: 3, backgroundColor: "#C4403F" }}>
           <View style={{ flex: 1, backgroundColor: "#FFF", width: 320, height: 320, borderRadius: 30, position: "absolute", alignSelf: 'center' }}>
             <Text style={{ alignSelf: "center", fontSize: 20, marginTop: 50 }}>Morning!, Kishore</Text>
-            <Text style={{ alignSelf: "center", fontSize: 10 }}>Lets continue with the session</Text>
+            <Text style={{ alignSelf: "center", fontSize: 10,color:"grey" }}>Lets continue with the session</Text>
             <Button
               icon={
                 <Icon
@@ -78,8 +119,8 @@ class HomePage extends React.Component {
         <View style={{ flex: 3 }}>
           <View style={{ flex: 1 }}></View>
           <View style={{ flex: 3, marginLeft: 20, marginRight: 20 }}>
-            <Text style={{ marginTop: 10,marginBottom:5 }}>Get Started</Text>
-            <Cards/>
+            <Text style={{fontWeight:"bold", marginTop: 10, marginBottom: 5 }}>Get Started</Text>
+            <Cards />
           </View>
         </View>
       </View>

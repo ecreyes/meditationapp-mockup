@@ -1,6 +1,6 @@
 import React from 'react';
-import { StatusBar, View, Image } from 'react-native';
-import { Text, Button } from 'react-native-elements';
+import { StatusBar, View, Image,Text } from 'react-native';
+import { Button } from 'react-native-elements';
 import logo from '../assets/meditation.png';
 
 class IntroPage extends React.Component {
@@ -16,8 +16,8 @@ class IntroPage extends React.Component {
             style={{ width: 200, height: 200 }}
             source={logo}
           />
-          <Text h4 style={{ marginTop: 20, fontFamily: 'sans-serif' }}>O N E P E A C E</Text>
-          <Text >where peace is everything</Text>
+          <Text style={{ marginTop: 20, fontFamily: 'sans-serif',fontWeight:"bold",fontSize:20 }}>O N E P E A C E</Text>
+          <Text style={{color:"grey"}}>where peace is everything</Text>
         </View>
         <View style={{ flex: 1, backgroundColor: 'white', justifyContent: "center", alignItems: "center" }}>
           <Button
@@ -25,7 +25,7 @@ class IntroPage extends React.Component {
             buttonStyle={{ width: 300, borderRadius: 30, backgroundColor: "#C4403F" }}
             onPress={() => this.props.navigation.navigate('Tabs')}
           />
-          <Text style={{ marginTop: 20 }}>Signup for a new account</Text>
+          <Text style={{ marginTop: 20,color:"grey" }}>Signup for a new account</Text>
         </View>
       </View>
     );
